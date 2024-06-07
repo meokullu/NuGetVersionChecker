@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net6.0; net7.0; net461; netcoreapp3.1; netstandard2.0</TargetFrameworks>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>Enes Okullu</Authors>
+    <Company>Enes Okullu</Company>
+    <Description>NugetVersionChecker is a track mechanism to compare versions of projects.</Description>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>version; version-checker; version-compare; NuGet; Nuget-Package; Dependency</PackageTags>
+    <PackageReleaseNotes>Initial release.</PackageReleaseNotes>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <FileVersion>1.0.0</FileVersion>
+    <Title>Nuget Version Checker</Title>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageProjectUrl>https://meokullu.github.io/NuGetVersionChecker/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/meokullu/NuGetVersionChecker</RepositoryUrl>
+    <ApplicationIcon>Resources\icon256.ico</ApplicationIcon>
+    <Copyright>Enes Okullu</Copyright>
+    <PackageIcon>icon128.png</PackageIcon>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>True</Optimize>
+    <WarningLevel>9999</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <WarningLevel>9999</WarningLevel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\icon256.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  <None Include="..\CHANGELOG.md">
+    <Pack>True</Pack>
+    <PackagePath>\</PackagePath>
+  </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NuGet.Protocol" Version="6.10.0">
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Resources\icon256.ico">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="Resources\icon128.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
