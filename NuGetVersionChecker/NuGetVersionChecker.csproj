@@ -20,6 +20,8 @@
     <ApplicationIcon>Resources\icon256.ico</ApplicationIcon>
     <Copyright>Enes Okullu</Copyright>
     <PackageIcon>icon128.png</PackageIcon>
+    <Version>1.0.0-beta</Version>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -41,6 +43,10 @@
       <PackagePath>\</PackagePath>
     </None>
   <None Include="..\CHANGELOG.md">
+    <Pack>True</Pack>
+    <PackagePath>\</PackagePath>
+  </None>
+  <None Include="D:\repos\meokullu\MarkBitmap\LICENSE">
     <Pack>True</Pack>
     <PackagePath>\</PackagePath>
   </None>
