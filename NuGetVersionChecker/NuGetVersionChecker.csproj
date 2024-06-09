@@ -7,10 +7,16 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Authors>Enes Okullu</Authors>
     <Company>Enes Okullu</Company>
-    <Description>NugetVersionChecker is a track mechanism to compare versions of projects.</Description>
+    <Description>NuGetVersionChecker is a track mechanism to compare versions of projects.</Description>
     <RepositoryType>git</RepositoryType>
     <PackageTags>version; version-checker; version-compare; NuGet; Nuget-Package; Dependency</PackageTags>
-    <PackageReleaseNotes>Initial release.</PackageReleaseNotes>
+    <PackageReleaseNotes>
+      v1.0.0-beta.1
+      * GetPackageFromNuGetAsync() and GetPackagesFromNuGetAsync() methods are added instead of now obsolote methods due to naming mistakes.
+      * While searching for packages for GetPackageFromNuGetAsync() and GetPacakgesFromNuGetAsync(), single was using to get a result from return data, it changes with FirstOrDefault().
+      
+      See changelog (https://github.com/meokullu/NuGetVersionChecker/blob/master/CHANGELOG.md)
+    </PackageReleaseNotes>
     <AssemblyVersion>1.0.0</AssemblyVersion>
     <FileVersion>1.0.0</FileVersion>
     <Title>Nuget Version Checker</Title>
@@ -20,7 +26,7 @@
     <ApplicationIcon>Resources\icon256.ico</ApplicationIcon>
     <Copyright>Enes Okullu</Copyright>
     <PackageIcon>icon128.png</PackageIcon>
-    <Version>1.0.0-beta</Version>
+    <Version>1.0.0-beta.1</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
