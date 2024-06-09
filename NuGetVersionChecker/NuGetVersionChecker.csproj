@@ -10,7 +10,10 @@
     <Description>NugetVersionChecker is a track mechanism to compare versions of projects.</Description>
     <RepositoryType>git</RepositoryType>
     <PackageTags>version; version-checker; version-compare; NuGet; Nuget-Package; Dependency</PackageTags>
-    <PackageReleaseNotes>Initial release.</PackageReleaseNotes>
+    <PackageReleaseNotes>v1.0.0-beta.1
+    
+    
+    </PackageReleaseNotes>
     <AssemblyVersion>1.0.0</AssemblyVersion>
     <FileVersion>1.0.0</FileVersion>
     <Title>Nuget Version Checker</Title>
@@ -20,7 +23,7 @@
     <ApplicationIcon>Resources\icon256.ico</ApplicationIcon>
     <Copyright>Enes Okullu</Copyright>
     <PackageIcon>icon128.png</PackageIcon>
-    <Version>1.0.0-beta</Version>
+    <Version>1.0.0-beta.1</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
