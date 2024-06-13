@@ -23,6 +23,14 @@ namespace NuGetVersionChecker
             public Version Version;
 
             /// <summary>
+            /// Empty Package constructor.
+            /// </summary>
+            public Package()
+            {
+
+            }
+
+            /// <summary>
             /// Package constructor with name and version.
             /// </summary>
             /// <param name="name">Name of the package.</param>

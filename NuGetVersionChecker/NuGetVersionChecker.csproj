@@ -11,9 +11,9 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>version; version-checker; version-compare; NuGet; Nuget-Package; Dependency</PackageTags>
     <PackageReleaseNotes>
-      v1.0.0-beta.1
-      * GetPackageFromNuGetAsync() and GetPackagesFromNuGetAsync() methods are added instead of now obsolote methods due to naming mistakes.
-      * While searching for packages for GetPackageFromNuGetAsync() and GetPacakgesFromNuGetAsync(), single was using to get a result from return data, it changes with FirstOrDefault().
+      v1.0.0-beta.2
+      * `Package` now has new constructor: `Package()` among `Package(string name, Version version)`.
+      * `GetPackageFromNuGetAsync()` and `GetPackagesFromNuGetAsync()` are no longer throw exception. Via new introcused `Package()` constructor, they return null package.
       
       See changelog (https://github.com/meokullu/NuGetVersionChecker/blob/master/CHANGELOG.md)
     </PackageReleaseNotes>

@@ -53,8 +53,6 @@ namespace NuGetVersionChecker
         /// </summary>
         /// <param name="packageName">Name of package.</param>
         /// <returns>Returns a package.</returns>
-        /// <exception cref="NullReferenceException">Throws NullReferenceException when package is not found via search.</exception>
-        /// <exception cref="ArgumentNullException">Throws ArgumentNullException when package version is not found via GetVersionsAsync().</exception>
         public static async Task<Package> GetPackageFromNuGetAsync(string packageName)
         {
             PackageSearchResource resource = await s_repository.GetResourceAsync<PackageSearchResource>();
@@ -75,18 +73,20 @@ namespace NuGetVersionChecker
             // Checking if package is null.
             if (package == null)
             {
-                throw new NullReferenceException();
+                return new Package();
             }
 
-            // Get latest version info of newest version of the package.
-            // TODO: Create better approach to use this individually instead of getting only latest one.
-            VersionInfo versionInfo = package.GetVersionsAsync().GetAwaiter().GetResult().OrderByDescending(p => p.Version).FirstOrDefault();
+            // Get version info of list of the package.
+            IEnumerable<VersionInfo> versionInfoList = await package.GetVersionsAsync();;
 
-            // Checking if versionInfo is null.
-            if (versionInfo == null)
+            // Checking if versionInfoList is null or empty.
+            if (versionInfoList == null || versionInfoList.Count() == 0)
             {
-                throw new ArgumentNullException();
+                return new Package();
             }
+
+            // Get latets version of the list of versions.
+            VersionInfo versionInfo = versionInfoList.OrderByDescending(p=>p.Version).First();
 
             // Returning a Package via creating with its constructor.
             return new Package(name: packageName, version: versionInfo.Version.Version);
@@ -97,8 +97,6 @@ namespace NuGetVersionChecker
         /// </summary>
         /// <param name="packageNameList">List of package names.</param>
         /// <returns>List of packages.</returns>
-        /// <exception cref="NullReferenceException">Throws NullReferenceException when package is not found via search.</exception>
-        /// <exception cref="ArgumentNullException">Throws ArgumentNullException when package version is not found via GetVersionsAsync().</exception>
         public static async Task<List<Package>> GetPackagesFromNuGetAsync(List<string> packageNameList)
         {
             PackageSearchResource resource = await s_repository.GetResourceAsync<PackageSearchResource>();
@@ -125,17 +123,25 @@ namespace NuGetVersionChecker
                 // Checking if package is null.
                 if (package == null)
                 {
-                    throw new NullReferenceException();
+                    continue;
                 }
 
                 // Get latest version info of newest version of the package.
-                // TODO: Create better approach to use this individually instead of getting only latest one.
-                VersionInfo versionInfo = package.GetVersionsAsync().GetAwaiter().GetResult().OrderByDescending(p => p.Version).FirstOrDefault();
+                IEnumerable<VersionInfo> versionInfoList = await package.GetVersionsAsync(); // OrderByDescending(p => p.Version).FirstOrDefault();
+
+                // Checking if versionInfoList is null or empty.
+                if (versionInfoList == null || versionInfoList.Count() == 0)
+                {
+                    continue;
+                }
+
+                // Get latest version of the list of versions.
+                VersionInfo versionInfo = versionInfoList.OrderByDescending(p => p.Version).First();
 
                 // Checking if versionInfo is null.
                 if (versionInfo == null)
                 {
-                    throw new ArgumentNullException();
+                    continue;
                 }
 
                 // Adding the Package via creating with its constructor.

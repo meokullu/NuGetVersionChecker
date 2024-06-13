@@ -57,7 +57,7 @@ namespace NuGetVersionChecker
                 bool parseResult = Version.TryParse(version.Value, out Version versionParseResult);
                 if (parseResult == false)
                 {
-                  continue; 
+                    continue;
                 }
 
                 if (versionParseResult == null)

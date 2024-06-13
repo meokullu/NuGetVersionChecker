@@ -16,8 +16,15 @@
 #### Security
 -->
 
-### [1.0.0-beta.1] (2024-06-09)
+### [1.0.0-beta.2] (2024-06-14)
+#### Added
+* `Package` now has `Package()` constructor among `Package(string name, Version version)`
 
+#### Changed
+* `GetPackageFromNugetAsync(string packageName)` no longer throws exception when package or its versions are not found. It simple returns empty package.
+* `GetPackagesFromNuGetAsync(List<string> packageNameList)` no longer throws exception when one of package or its versions are not found. It simple returns a list of package.
+
+### [1.0.0-beta.1] (2024-06-09)
 ### Added
 * `GetPackageFromNuGetAsync(string packageName)` method is added instead of now obsolote `GetPackageFromNuget(string packageName)` method.
 * `GetPackagesFromNuGetAsync(List<string> packageNameList)` method is added instead of now obsolote `GetPackagesFromNuget(List<string> packageNameList)` method.
