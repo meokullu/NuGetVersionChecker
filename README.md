@@ -9,6 +9,11 @@ Since there is no tracking mechanism that notifies users of package without manu
 ### Example Usage
 
 ```
+// Path for .csporj file. Return list of `Package` that contains package names, versions and availability to update.
+CheckVersionAsync(string path);
+```
+
+```
 // Path for .csproj file. Returns list of `Package` that contains package name and it version.
 GetPackages(string path);
 ```

@@ -11,9 +11,9 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>version; version-checker; version-compare; NuGet; Nuget-Package; Dependency</PackageTags>
     <PackageReleaseNotes>
-      v1.0.0-beta.2
-      * `Package` now has new constructor: `Package()` among `Package(string name, Version version)`.
-      * `GetPackageFromNuGetAsync()` and `GetPackagesFromNuGetAsync()` are no longer throw exception. Via new introcused `Package()` constructor, they return null package.
+      v1.0.0-beta.rc
+      CheckVersionAsync(string path) method is added.
+      Package now uses SemanticVersion instead of System.Version.      
       
       See changelog (https://github.com/meokullu/NuGetVersionChecker/blob/master/CHANGELOG.md)
     </PackageReleaseNotes>
@@ -26,7 +26,7 @@
     <ApplicationIcon>Resources\icon256.ico</ApplicationIcon>
     <Copyright>Enes Okullu</Copyright>
     <PackageIcon>icon128.png</PackageIcon>
-    <Version>1.0.0-beta.2</Version>
+    <Version>1.0.0-rc</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 

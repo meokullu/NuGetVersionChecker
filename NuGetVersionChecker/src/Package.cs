@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NuGet.Versioning;
+using System;
 
 namespace NuGetVersionChecker
 {
@@ -20,7 +21,12 @@ namespace NuGetVersionChecker
             /// <summary>
             /// Version of the package.
             /// </summary>
-            public Version Version;
+            public SemanticVersion Version;
+
+            /// <summary>
+            /// If new version is available to update.
+            /// </summary>
+            public bool UpdateAvailable;
 
             /// <summary>
             /// Empty Package constructor.
@@ -34,11 +40,24 @@ namespace NuGetVersionChecker
             /// Package constructor with name and version.
             /// </summary>
             /// <param name="name">Name of the package.</param>
-            /// <param name="version">Version of the package on <seealso cref="System.Version"/> format.</param>
-            public Package(string name, Version version)
+            /// <param name="version">Version of the package on <seealso cref="SemanticVersion"/> format.</param>
+            public Package(string name, SemanticVersion version)
             {
                 Name = name;
                 Version = version;
+            }
+
+            /// <summary>
+            /// Package constructor with name, version and availability to update..
+            /// </summary>
+            /// <param name="name">Name of the package.</param>
+            /// <param name="version">Version of the package on <seealso cref="SemanticVersion"/> format.</param>
+            /// <param name="updateAvailable">Availability to update.</param>
+            public Package(string name, SemanticVersion version, bool updateAvailable)
+            {
+                Name = name;
+                Version = version;
+                UpdateAvailable = updateAvailable;
             }
         }
     }    
