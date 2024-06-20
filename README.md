@@ -3,6 +3,9 @@
 
 NuGet Version Checker is a project aims recency of NuGet packges on projects.
 
+![NuGetVersionChecker](https://github.com/meokullu/NuGetVersionChecker/assets/4971757/2bb4e390-009e-442b-b91a-8f067f2757fc)
+
+[Download on NuGet gallery](https://www.nuget.org/packages/NuGetVersionChecker/)
 ### Description
 Since there is no tracking mechanism that notifies users of package without manually checking them, NuGetVersionChecker will allow a way to track packages certain ways on upcoming versions.
 
