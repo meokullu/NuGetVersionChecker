@@ -1,5 +1,7 @@
-﻿using System;
+﻿using NuGet.Versioning;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Xml;
 
 namespace NuGetVersionChecker
@@ -16,58 +18,83 @@ namespace NuGetVersionChecker
         /// <returns>List of Packages.</returns>
         public static List<Package> GetPackages(string path)
         {
+            // Creating instance of XmlDocument.
             XmlDocument xmldoc = new XmlDocument();
-            xmldoc.Load(path);
 
-            XmlNodeList packageReferences = xmldoc?.DocumentElement?.SelectNodes("/Project/ItemGroup/PackageReference");
-
+            // Creating list of empty packages.
             List<Package> packages = new List<Package>();
 
-            // Checking package if packageRefenrences is null or empty.
-            if (packageReferences == null || packageReferences.Count == 0)
+            try
             {
-                return packages;
+                // Loading file with specified path.
+                xmldoc.Load(path);
+
+                // Getting nodes with names as "PackageReference".
+                XmlNodeList packageReferences = xmldoc?.DocumentElement?.SelectNodes("/Project/ItemGroup/PackageReference");
+
+                // Checking package if packageRefenrences is null or empty.
+                if (packageReferences == null || packageReferences.Count == 0)
+                {
+                    // Returning empty list of packages.
+                    return packages;
+                }
+
+                // Loop for every node.
+                foreach (XmlNode xmlNode in packageReferences)
+                {
+                    // Checking if node is null.
+                    if (xmlNode == null)
+                    {   
+                        continue;
+                    }
+
+                    // Checking if attribute is null.
+                    if (xmlNode.Attributes == null)
+                    {
+                        continue;
+                    }
+
+                    // Checking if attribute with "Include" exists.
+                    XmlAttribute xmlAttribute = xmlNode.Attributes["Include"];
+                    if (xmlAttribute == null)
+                    {
+                        continue;
+                    }
+
+                    // Checking if attrbute with "Version" exists.
+                    var version = xmlNode.Attributes["Version"];
+                    if (version == null)
+                    {
+                        continue;
+                    }
+
+                    // Parsion string version into SemanticVersion.
+                    bool parseResult = SemanticVersion.TryParse(version.Value, out SemanticVersion versionParseResult);
+                    if (parseResult == false)
+                    {
+                        Debug.WriteLine($"Version couldn't parsed for {version.Value}");
+
+                        continue;
+                    }
+
+                    // Checking if version parsing result is null.
+                    if (versionParseResult == null)
+                    {
+                        Debug.WriteLine($"Version couldn't parsed for {version.Value}");
+
+                        continue;
+                    }
+
+                    // Adding package into the returning list.
+                    packages.Add(new Package(name: xmlAttribute.Value, version: versionParseResult));
+                }
+            }
+            catch (Exception)
+            {
+                Debug.WriteLine($"NuGetVersionChecker: Path is not found: {path} or nodes could not load.");
             }
 
-            // Loop for every node.
-            foreach (XmlNode xmlNode in packageReferences)
-            {
-                if (xmlNode == null)
-                {
-                    continue;
-                }
-
-                if (xmlNode.Attributes == null)
-                {
-                    continue;
-                }
-
-                XmlAttribute package = xmlNode.Attributes["Include"];
-                if (package == null)
-                {
-                    continue;
-                }
-
-                var version = xmlNode.Attributes["Version"];
-                if (version == null)
-                {
-                    continue;
-                }
-
-                bool parseResult = Version.TryParse(version.Value, out Version versionParseResult);
-                if (parseResult == false)
-                {
-                    continue;
-                }
-
-                if (versionParseResult == null)
-                {
-                    continue;
-                }
-
-                packages.Add(new Package(name: package.Value, version: versionParseResult));
-            }
-
+            // Returning list of packages.
             return packages;
         }
     }

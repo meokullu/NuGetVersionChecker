@@ -22,32 +22,6 @@ namespace NuGetVersionChecker
 
         #endregion Static
 
-        #region Temporary obsolote method due to naming mistake on async method.
-
-        /// <summary>
-        /// Obsolote method due to naming mistake.
-        /// </summary>
-        /// <param name="packageName"></param>
-        /// <returns></returns>
-        [Obsolete("Use GetPackageFromNugetAsync(), sorry for naming mistake.", error: false)]
-        public static async Task<Package> GetPackageFromNuget(string packageName)
-        {
-            return await GetPackageFromNuGetAsync(packageName: packageName);
-        }
-
-        /// <summary>
-        /// Obsolote method due to naming mistake.
-        /// </summary>
-        /// <param name="packageNameList"></param>
-        /// <returns></returns>
-        [Obsolete("Use GetPackagesFromNugetAsync(), sorry for naming mistake.", error: false)]
-        public static async Task<List<Package>> GetPackagesFromNuget(List<string> packageNameList)
-        {
-            return await GetPackagesFromNuGetAsync(packageNameList: packageNameList);
-        }
-
-        #endregion Temporary obsolote method due to naming mistake on async method.
-
         /// <summary>
         /// Returns a package by making search on NuGet.
         /// </summary>
@@ -77,19 +51,19 @@ namespace NuGetVersionChecker
             }
 
             // Get version info of list of the package.
-            IEnumerable<VersionInfo> versionInfoList = await package.GetVersionsAsync();;
+            IEnumerable<VersionInfo> versionInfoList = await package.GetVersionsAsync(); ;
 
             // Checking if versionInfoList is null or empty.
-            if (versionInfoList == null || versionInfoList.Count() == 0)
+            if (versionInfoList == null || versionInfoList.Any() == false)
             {
                 return new Package();
             }
 
             // Get latets version of the list of versions.
-            VersionInfo versionInfo = versionInfoList.OrderByDescending(p=>p.Version).First();
+            VersionInfo versionInfo = versionInfoList.OrderByDescending(p => p.Version).First();
 
             // Returning a Package via creating with its constructor.
-            return new Package(name: packageName, version: versionInfo.Version.Version);
+            return new Package(name: packageName, version: versionInfo.Version);
         }
 
         /// <summary>
@@ -130,7 +104,7 @@ namespace NuGetVersionChecker
                 IEnumerable<VersionInfo> versionInfoList = await package.GetVersionsAsync(); // OrderByDescending(p => p.Version).FirstOrDefault();
 
                 // Checking if versionInfoList is null or empty.
-                if (versionInfoList == null || versionInfoList.Count() == 0)
+                if (versionInfoList == null || versionInfoList.Any() == false)
                 {
                     continue;
                 }
@@ -145,7 +119,7 @@ namespace NuGetVersionChecker
                 }
 
                 // Adding the Package via creating with its constructor.
-                packageList.Add(new Package(name: packageName, version: versionInfo.Version.Version));
+                packageList.Add(new Package(name: packageName, version: versionInfo.Version));
             }
 
             // Retuning list of packages as return data.
