@@ -31,6 +31,8 @@ GetPackageFromNuGetAsync(string packageName);
 GetPackagesFromNuGetAsync(List<string> packageNameList);
 ```
 
+To check listed methods visit wiki page. [NuGetVersionChecker Wiki](https://github.com/meokullu/NuGetVersionChecker/wiki)
+
 ### Version History
 See [Changelog](https://github.com/meokullu/NuGetVersionChecker/blob/master/CHANGELOG.md)
   
