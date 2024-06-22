@@ -11,9 +11,8 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>version; version-checker; version-compare; NuGet; Nuget-Package; Dependency</PackageTags>
     <PackageReleaseNotes>
-      v1.0.0-beta.rc
-      CheckVersionAsync(string path) method is added.
-      Package now uses SemanticVersion instead of System.Version.      
+      v1.0.0
+      Initial release      
       
       See changelog (https://github.com/meokullu/NuGetVersionChecker/blob/master/CHANGELOG.md)
     </PackageReleaseNotes>
