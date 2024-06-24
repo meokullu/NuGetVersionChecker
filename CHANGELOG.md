@@ -16,8 +16,19 @@
 #### Security
 -->
 
-### [1.0.0-rc] (2024-06-20)
+### [1.1.0] (2024-06-24)
+#### Added
+* Override method of ToString() for `Package`. It displays package name and version.
 
+#### Changed
+* `GetPackageFromNuGetAsync(string packageName)` and `GetPackagesFromNuGetAsync(List<string> packageNameList)` methods are not using `package.Identity.Id` from `IPackageSearchMetadata` instead of requested package name when creating `Package` data for `Name`.
+* `GetPackages(string path)` now checks if path is null or empty before parsing with `XmlDocument.Load()` and returns empty list of `Package` data.
+* `CheckVersionAsync(string path)` now checks if path is null or empty and returns empty list of `Package` data. 
+
+### [1.0.0] (2024-06-23)
+Initial release
+
+### [1.0.0-rc] (2024-06-20)
 #### Added
 * `CheckVersionAsync(string path)` method added. This method return packages with their names, versions and available to update as a list.
 

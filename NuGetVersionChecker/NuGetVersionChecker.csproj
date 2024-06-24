@@ -9,15 +9,18 @@
     <Company>Enes Okullu</Company>
     <Description>NuGetVersionChecker is a track mechanism to compare versions of projects.</Description>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>version; version-checker; version-compare; NuGet; Nuget-Package; Dependency</PackageTags>
+    <PackageTags>version; version-checker; version-compare; NuGet; Nuget-Package; version-check; Dependency</PackageTags>
     <PackageReleaseNotes>
-      v1.0.0
-      Initial release      
+      v1.1.0
+      * GetPackageFromNuGetAsync() and GetPackagesFromNuGetAsync() now uses package.Identity.Id to fill Package data instead of using requested Package name.
+      * Package now has override ToString() method.
+      * GetPackages(string path) now check if path is null or empty.
+      * VersionCheckAsync(string path) now checks if path is null or empty.
       
       See changelog (https://github.com/meokullu/NuGetVersionChecker/blob/master/CHANGELOG.md)
     </PackageReleaseNotes>
-    <AssemblyVersion>1.0.0</AssemblyVersion>
-    <FileVersion>1.0.0</FileVersion>
+    <AssemblyVersion>1.1.0</AssemblyVersion>
+    <FileVersion>1.1.0</FileVersion>
     <Title>Nuget Version Checker</Title>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageProjectUrl>https://meokullu.github.io/NuGetVersionChecker/</PackageProjectUrl>
@@ -25,7 +28,7 @@
     <ApplicationIcon>Resources\icon256.ico</ApplicationIcon>
     <Copyright>Enes Okullu</Copyright>
     <PackageIcon>icon128.png</PackageIcon>
-    <Version>1.0.0</Version>
+    <Version>1.1.0</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 

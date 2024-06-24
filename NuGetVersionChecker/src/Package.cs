@@ -59,6 +59,15 @@ namespace NuGetVersionChecker
                 Version = version;
                 UpdateAvailable = updateAvailable;
             }
+
+            /// <summary>
+            /// Override method of ToString(), simply displays package name and its version.
+            /// </summary>
+            /// <returns>Concat of package name and version.</returns>
+            public override string ToString()
+            {
+                return $"{Name} {Version}";
+            }
         }
     }    
 }

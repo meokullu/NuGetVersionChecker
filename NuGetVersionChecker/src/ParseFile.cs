@@ -18,14 +18,20 @@ namespace NuGetVersionChecker
         /// <returns>List of Packages.</returns>
         public static List<Package> GetPackages(string path)
         {
-            // Creating instance of XmlDocument.
-            XmlDocument xmldoc = new XmlDocument();
-
             // Creating list of empty packages.
             List<Package> packages = new List<Package>();
 
+            // Checking if path is null or empty.
+            if (string.IsNullOrEmpty(path))
+            {
+                return packages;
+            }
+
             try
             {
+                // Creating instance of XmlDocument.
+                XmlDocument xmldoc = new XmlDocument();
+
                 // Loading file with specified path.
                 xmldoc.Load(path);
 
