@@ -51,7 +51,7 @@ namespace NuGetVersionChecker
             }
 
             // Get version info of list of the package.
-            IEnumerable<VersionInfo> versionInfoList = await package.GetVersionsAsync(); ;
+            IEnumerable<VersionInfo> versionInfoList = await package.GetVersionsAsync();
 
             // Checking if versionInfoList is null or empty.
             if (versionInfoList == null || versionInfoList.Any() == false)
@@ -63,7 +63,7 @@ namespace NuGetVersionChecker
             VersionInfo versionInfo = versionInfoList.OrderByDescending(p => p.Version).First();
 
             // Returning a Package via creating with its constructor.
-            return new Package(name: packageName, version: versionInfo.Version);
+            return new Package(name: package.Identity.Id, version: versionInfo.Version);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace NuGetVersionChecker
                 }
 
                 // Get latest version info of newest version of the package.
-                IEnumerable<VersionInfo> versionInfoList = await package.GetVersionsAsync(); // OrderByDescending(p => p.Version).FirstOrDefault();
+                IEnumerable<VersionInfo> versionInfoList = await package.GetVersionsAsync();
 
                 // Checking if versionInfoList is null or empty.
                 if (versionInfoList == null || versionInfoList.Any() == false)
@@ -119,7 +119,7 @@ namespace NuGetVersionChecker
                 }
 
                 // Adding the Package via creating with its constructor.
-                packageList.Add(new Package(name: packageName, version: versionInfo.Version));
+                packageList.Add(new Package(name: package.Identity.Id, version: versionInfo.Version));
             }
 
             // Retuning list of packages as return data.

@@ -13,14 +13,20 @@ namespace NuGetVersionChecker
         /// <returns>List of Packages.</returns>
         public static async Task<List<Package>> CheckVersionAsync(string path)
         {
+            // Returning data which consisting packages.
+            List<Package> packages = new List<Package>();
+
+            // Checking if path is null or empty.
+            if (string.IsNullOrEmpty(path))
+            {
+                return packages;
+            }
+
             // Get currently used packages.
             List<Package> usedPackages = GetPackages(path);
 
             // Get used packages info from NuGet.
             List<Package> nugetPackages = await GetPackagesFromNuGetAsync(usedPackages.Select(p => p.Name).ToList());
-
-            // Returning data which consisting packages.
-            List<Package> packages = new List<Package>();   
 
             // Loop for packages
             foreach (Package package in usedPackages)
