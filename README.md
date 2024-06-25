@@ -31,6 +31,32 @@ GetPackageFromNuGetAsync(string packageName);
 GetPackagesFromNuGetAsync(List<string> packageNameList);
 ```
 
+#### Console Application
+
+```
+// Call this method.
+NuGetVersionCheck();
+```
+
+```
+internal static void NuGetVersionCheck()
+{
+  string currentDirectory = System.IO.Directory.GetCurrentDirectory();
+
+  string startupPath = Directory.GetParent(currentDirectory).Parent.Parent.FullName;
+
+  string appName = Assembly.GetExecutingAssembly().GetName().Name;
+
+  List<Package> result = CheckVersionAsync($"{startupPath}//{appName}.csproj").GetAwaiter().GetResult();
+
+  foreach (Package package in result.Where(p => p.UpdateAvailable))
+  {
+    Console.WriteLine($"Update available for: {package}");
+    // Debug.WriteLine($"Update available for: {package}");
+  }
+}
+```
+
 To check listed methods visit wiki page. [NuGetVersionChecker Wiki](https://github.com/meokullu/NuGetVersionChecker/wiki)
 
 ### Version History
