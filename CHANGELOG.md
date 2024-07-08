@@ -16,6 +16,16 @@
 #### Security
 -->
 
+### [1.2.0] (2024-07-07)
+#### Added
+* `PackageEqualityComparer` class is added into `Package`. It has `Equal(Package x, Package y)` and `GetHashCode(Package obj)` interface methods of `IEqualityComparer<Package>`.
+* `CheckVersionAsync(List<string> pathList, bool includePrerelease)` method is added. This method uses distinction before call `GetPackagesFromNuGet(List<string> packageNameList)` to get packages to compare their versions.
+
+#### Changed
+* `GetPackageFromNuGetAsync(string packageName)` method now has optional parameter of `includePrerelease` which is set to false to indicate if prerelease is included for search.
+* `GetPackagesFromNuGetAsync(List<string> packageNameList)` method now has optional parameter of `includePrerelease` which is set to false to indicate if prerelease is included for search.
+* `CheckVersionAsync(string path)` method now has optional parameter of `includePrerelease` which is set to false to indicate if prerelease is included for search.
+
 ### [1.1.0] (2024-06-24)
 #### Added
 * Override method of ToString() for `Package`. It displays package name and version.

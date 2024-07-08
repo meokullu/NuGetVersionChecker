@@ -11,16 +11,14 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>version; version-checker; version-compare; NuGet; Nuget-Package; version-check; Dependency</PackageTags>
     <PackageReleaseNotes>
-      v1.1.0
-      * GetPackageFromNuGetAsync() and GetPackagesFromNuGetAsync() now uses package.Identity.Id to fill Package data instead of using requested Package name.
-      * Package now has override ToString() method.
-      * GetPackages(string path) now check if path is null or empty.
-      * VersionCheckAsync(string path) now checks if path is null or empty.
-      
+      v1.2.0
+      PackageEqualityComparer added which is derived from IEqualityComparer.
+      CheckVersionAsync() method is added to compare versions as a list of Package.
+      GetPackageFromNuGetAsync() and GetPackagesFromNuGetAsync() method have now includePrerelease option parameter which is set false default to determine if prerelease packages are included during search from NuGet API.      
       See changelog (https://github.com/meokullu/NuGetVersionChecker/blob/master/CHANGELOG.md)
     </PackageReleaseNotes>
-    <AssemblyVersion>1.1.0</AssemblyVersion>
-    <FileVersion>1.1.0</FileVersion>
+    <AssemblyVersion>1.2.0</AssemblyVersion>
+    <FileVersion>1.2.0</FileVersion>
     <Title>Nuget Version Checker</Title>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageProjectUrl>https://meokullu.github.io/NuGetVersionChecker/</PackageProjectUrl>
@@ -28,7 +26,7 @@
     <ApplicationIcon>Resources\icon256.ico</ApplicationIcon>
     <Copyright>Enes Okullu</Copyright>
     <PackageIcon>icon128.png</PackageIcon>
-    <Version>1.1.0</Version>
+    <Version>1.2.0</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
@@ -40,6 +38,10 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <WarningLevel>9999</WarningLevel>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="src\CompareVersion.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <Content Include="Resources\icon256.ico" />
