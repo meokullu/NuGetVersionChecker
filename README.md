@@ -13,7 +13,7 @@ Since there is no tracking mechanism that notifies users of package without manu
 
 ```
 // Path for .csporj file. Return list of `Package` that contains package names, versions and availability to update.
-CheckVersionAsync(string path);
+CheckVersionAsync(string path, bool includePrelease = false);
 ```
 
 ```
@@ -23,12 +23,12 @@ GetPackages(string path);
 
 ```
 // packageName of the NuGet package. Returns `Package` that contains package name and its version.
-GetPackageFromNuGetAsync(string packageName);
+GetPackageFromNuGetAsync(string packageName, bool includePrerelease = false);
 ```
 
 ```
 // packageNameList of the list of NuGet package names. Returns List of `Package` that contains packages name and their versions.
-GetPackagesFromNuGetAsync(List<string> packageNameList);
+GetPackagesFromNuGetAsync(List<string> packageNameList, bool includePrerelease = false);
 ```
 
 To check listed methods visit wiki page. [NuGetVersionChecker Wiki](https://github.com/meokullu/NuGetVersionChecker/wiki)

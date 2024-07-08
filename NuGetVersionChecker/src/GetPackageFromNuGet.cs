@@ -26,11 +26,12 @@ namespace NuGetVersionChecker
         /// Returns a package by making search on NuGet.
         /// </summary>
         /// <param name="packageName">Name of package.</param>
+        /// <param name="includePrerelease">Include Prerelease version to compare versions.</param>
         /// <returns>Returns a package.</returns>
-        public static async Task<Package> GetPackageFromNuGetAsync(string packageName)
+        public static async Task<Package> GetPackageFromNuGetAsync(string packageName, bool includePrerelease = true)
         {
             PackageSearchResource resource = await s_repository.GetResourceAsync<PackageSearchResource>();
-            SearchFilter searchFilter = new SearchFilter(includePrerelease: true);
+            SearchFilter searchFilter = new SearchFilter(includePrerelease: includePrerelease);
 
             // Making a search with taking one package.
             IEnumerable<IPackageSearchMetadata> searchResults = await resource.SearchAsync(
@@ -70,11 +71,12 @@ namespace NuGetVersionChecker
         /// Returns list of packages by making search on NuGet.
         /// </summary>
         /// <param name="packageNameList">List of package names.</param>
+        /// <param name="includePrerelease">Include Prerelease version to compare versions.</param>
         /// <returns>List of packages.</returns>
-        public static async Task<List<Package>> GetPackagesFromNuGetAsync(List<string> packageNameList)
+        public static async Task<List<Package>> GetPackagesFromNuGetAsync(List<string> packageNameList, bool includePrerelease = true)
         {
             PackageSearchResource resource = await s_repository.GetResourceAsync<PackageSearchResource>();
-            SearchFilter searchFilter = new SearchFilter(includePrerelease: true);
+            SearchFilter searchFilter = new SearchFilter(includePrerelease: includePrerelease);
 
             // Return value.
             List<Package> packageList = new List<Package>();
