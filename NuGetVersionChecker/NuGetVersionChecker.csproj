@@ -11,14 +11,12 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>version; version-checker; version-compare; NuGet; Nuget-Package; version-check; Dependency</PackageTags>
     <PackageReleaseNotes>
-      v1.2.0
-      PackageEqualityComparer added which is derived from IEqualityComparer.
-      CheckVersionAsync() method is added to compare versions as a list of Package.
-      GetPackageFromNuGetAsync() and GetPackagesFromNuGetAsync() method have now includePrerelease option parameter which is set false default to determine if prerelease packages are included during search from NuGet API.      
+      v1.2.1
+      Removed unused usings.
       See changelog (https://github.com/meokullu/NuGetVersionChecker/blob/master/CHANGELOG.md)
     </PackageReleaseNotes>
-    <AssemblyVersion>1.2.0</AssemblyVersion>
-    <FileVersion>1.2.0</FileVersion>
+    <AssemblyVersion>1.2.1</AssemblyVersion>
+    <FileVersion>1.2.1</FileVersion>
     <Title>Nuget Version Checker</Title>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageProjectUrl>https://meokullu.github.io/NuGetVersionChecker/</PackageProjectUrl>
@@ -26,7 +24,7 @@
     <ApplicationIcon>Resources\icon256.ico</ApplicationIcon>
     <Copyright>Enes Okullu</Copyright>
     <PackageIcon>icon128.png</PackageIcon>
-    <Version>1.2.0</Version>
+    <Version>1.2.1</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
