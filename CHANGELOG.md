@@ -16,6 +16,10 @@
 #### Security
 -->
 
+### [1.3.0] (2025-11-18)
+#### Added
+
+
 ### [1.2.0] (2024-07-07)
 #### Added
 * `PackageEqualityComparer` class is added into `Package`. It has `Equal(Package x, Package y)` and `GetHashCode(Package obj)` interface methods of `IEqualityComparer<Package>`.
