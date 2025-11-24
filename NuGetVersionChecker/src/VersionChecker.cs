@@ -32,6 +32,12 @@ namespace NuGetVersionChecker
                 packageNameList: usedPackages.Select(p => p.Name).ToList(),
                 includePrerelease: includePrerelease);
 
+            // Check if nuget packages is null or empty.
+            if (nugetPackages == null || nugetPackages.Count == 0)
+            {
+                return packages;
+            }
+
             // Loop for packages
             foreach (Package package in usedPackages)
             {
@@ -87,6 +93,12 @@ namespace NuGetVersionChecker
             List<Package> nugetPackages = await GetPackagesFromNuGetAsync(
                 packageNameList: disctinctUsedPackage.Select(p => p.Name).ToList(),
                 includePrerelease: includePrerelease);
+
+            // Check if nuget packages is null or empty.
+            if (nugetPackages == null || nugetPackages.Count == 0)
+            {
+                return packages;
+            }
 
             // Loop for packages
             foreach (Package package in usedPackages)
