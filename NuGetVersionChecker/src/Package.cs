@@ -87,7 +87,7 @@ namespace NuGetVersionChecker
                     if (x == null || y == null)
                     {
                         // Returning false to indicate at least one of packages is null.
-                        return false; 
+                        return false;
                     }
                     // Checking if two given package's property values are same.
                     else if (x.Name == y.Name && x.Version == y.Version)
@@ -113,5 +113,5 @@ namespace NuGetVersionChecker
                 }
             }
         }
-    }    
+    }
 }

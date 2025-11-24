@@ -50,7 +50,7 @@ namespace NuGetVersionChecker
                 {
                     // Checking if node is null.
                     if (xmlNode == null)
-                    {   
+                    {
                         continue;
                     }
 

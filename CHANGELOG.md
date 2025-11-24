@@ -16,6 +16,16 @@
 #### Security
 -->
 
+### [1.3.0] (2025-11-24)
+#### Added
+* Null check for return package data in `CheckVersionAsync(string path, bool includePrerelease)` method. If it is null, return empty list of Packages.
+* Null check for return package data in `CheckVersionAsync(List<string> pathList, bool includePrerelease)` method. If it is null, return empty list of Packages.
+* Network availability check before making NuGet API calls in `GetPackageFromNuGetAsync(string packageName, bool includePrerelease)` method. If network is unavailable, it return empty Package.
+* Network availability check before making NuGet API calls in `GetPackagesFromNuGetAsync(List<string> packageNameList, bool includePrerelease)` method. If network is unavailable, it return empty list of Packages.
+
+#### Changed
+* Updated NuGet.Protocol package to the 6.14.0 version.
+
 ### [1.2.0] (2024-07-07)
 #### Added
 * `PackageEqualityComparer` class is added into `Package`. It has `Equal(Package x, Package y)` and `GetHashCode(Package obj)` interface methods of `IEqualityComparer<Package>`.
