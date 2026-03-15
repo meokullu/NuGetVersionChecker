@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Reflection;
 using System.Xml;
 
 namespace NuGetVersionChecker
@@ -102,6 +104,36 @@ namespace NuGetVersionChecker
 
             // Returning list of packages.
             return packages;
+        }
+
+       /// <summary>
+       /// Gets the full path of the current working directory of the application.
+       /// </summary>
+       /// <remarks>The current directory is the directory from which the process is started, unless it is
+       /// changed by the application. The value may differ between threads or after calling methods that change the
+       /// current directory, such as System.IO.Directory.SetCurrentDirectory. The returned path does not end with a
+       /// directory separator character.</remarks>
+        public static string CurrentDirectory => System.IO.Directory.GetCurrentDirectory();
+
+        /// <summary>
+        /// Gets the full path of the startup directory of the application, which is the parent directory of the current working directory. It assumes that the .csproj file is located three levels up from the current directory.   
+        /// </summary>
+        public static string StartupPath => Directory.GetParent(CurrentDirectory).Parent.Parent.FullName;
+
+        /// <summary>
+        /// Gets the name of the application, which is derived from the entry assembly's name. It assumes that the .csproj file has the same name as the application.
+        /// </summary>
+        public static string AppName => Assembly.GetEntryAssembly().GetName().Name;
+
+        /// <summary>
+        /// Constructs the full file path to the .csproj file based on the startup directory and application name.
+        /// </summary>
+        /// <returns>The full file path to the .csproj file.</returns>
+        /// <returns>Exact path of .csproj file.</returns>
+        public static string GetFilePath()
+        {
+            // Returning path of .csproj file.
+            return $"{StartupPath}\\{AppName}.csproj";
         }
     }
 }
