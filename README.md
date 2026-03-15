@@ -49,14 +49,8 @@ NuGetVersionCheck();
 
 ```
 internal static void NuGetVersionCheck()
-{
-  string currentDirectory = System.IO.Directory.GetCurrentDirectory();
-
-  string startupPath = Directory.GetParent(currentDirectory).Parent.Parent.FullName;
-
-  string appName = Assembly.GetExecutingAssembly().GetName().Name;
-
-  List<Package> result = CheckVersionAsync($"{startupPath}//{appName}.csproj").GetAwaiter().GetResult();
+{ 
+  List<Package> result = CheckVersionAsync(GetFilePath()).GetAwaiter().GetResult();
 
   foreach (Package package in result.Where(p => p.UpdateAvailable))
   {

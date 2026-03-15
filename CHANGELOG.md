@@ -16,6 +16,11 @@
 #### Security
 -->
 
+### [1.4.0] (2026-03-15)
+#### Added
+* `CurrentDirectory`, `StartupPath` and `AppName` properties are added to `NuGetVersionChecker` class. These properties are used in `NuGetVersionCheck()` method to get current directory, startup path and application name for easier use of this method in console applications.
+* `GetFilePath()` method is added to `NuGetVersionChecker` class. This method is used in `NuGetVersionCheck()` method to get file path for .csproj file based on entry directory, startup path and application name.
+
 ### [1.3.0] (2025-11-24)
 #### Added
 * Null check for return package data in `CheckVersionAsync(string path, bool includePrerelease)` method. If it is null, return empty list of Packages.
